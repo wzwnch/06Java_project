@@ -1,0 +1,27 @@
+<template>
+  <el-container class="layout-container">
+    <Sidebar />
+    <el-container>
+      <Header />
+      <el-main class="main">
+        <router-view />
+      </el-main>
+    </el-container>
+  </el-container>
+</template>
+
+<script setup lang="ts">
+import Sidebar from './Sidebar.vue'
+import Header from './Header.vue'
+</script>
+
+<style scoped>
+.layout-container {
+  height: 100vh;
+}
+
+.main {
+  background-color: #f5f7fa;
+  padding: 20px;
+}
+</style>

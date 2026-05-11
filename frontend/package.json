@@ -1,0 +1,38 @@
+{
+  "name": "shortlink-frontend",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:run"
+  },
+  "dependencies": {
+    "axios": "^1.15.2",
+    "dayjs": "^1.11.20",
+    "echarts": "^6.0.0",
+    "element-plus": "^2.13.7",
+    "pinia": "^3.0.4",
+    "vue": "^3.4.21",
+    "vue-router": "^5.0.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitest/ui": "^1.6.0",
+    "@vue/test-utils": "^2.4.6",
+    "cypress": "^13.9.0",
+    "happy-dom": "^14.12.0",
+    "start-server-and-test": "^2.0.4",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vitest": "^1.6.0",
+    "vue-tsc": "^2.0.6"
+  }
+}
