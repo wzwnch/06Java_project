@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,a as o}from"./index-DkUKowRv.js";const t={},c={class:"dashboard-container"};function r(d,e){return a(),n("div",c,[...e[0]||(e[0]=[o("h2",null,"仪表盘",-1),o("p",null,"待实现",-1)])])}const l=s(t,[["render",r],["__scopeId","data-v-e78f4d9c"]]);export{l as default};

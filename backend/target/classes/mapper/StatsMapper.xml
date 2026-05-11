@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shortlink.mapper.StatsMapper">
+
+    <resultMap id="StatsResultMap" type="com.shortlink.entity.LinkStatsDO">
+        <id column="id" property="id"/>
+        <result column="short_code" property="shortCode"/>
+        <result column="gid" property="gid"/>
+        <result column="pv" property="pv"/>
+        <result column="uv" property="uv"/>
+        <result column="uip" property="uip"/>
+        <result column="ip" property="ip"/>
+        <result column="region" property="region"/>
+        <result column="os" property="os"/>
+        <result column="browser" property="browser"/>
+        <result column="device" property="device"/>
+        <result column="network" property="network"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <resultMap id="StatsTodayResultMap" type="com.shortlink.entity.LinkStatsTodayDO">
+        <id column="id" property="id"/>
+        <result column="short_code" property="shortCode"/>
+        <result column="gid" property="gid"/>
+        <result column="date" property="date"/>
+        <result column="pv" property="pv"/>
+        <result column="uv" property="uv"/>
+        <result column="uip" property="uip"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Stats_Column_List">
+        id, short_code, gid, pv, uv, uip, ip, region, os, browser, device, network, create_time
+    </sql>
+
+    <sql id="Stats_Today_Column_List">
+        id, short_code, gid, date, pv, uv, uip, create_time, update_time
+    </sql>
+
+    <insert id="insertStatsToday" parameterType="com.shortlink.entity.LinkStatsTodayDO">
+        INSERT INTO link_link_stats_today (id, short_code, gid, date, pv, uv, uip, create_time, update_time)
+        VALUES (#{id}, #{shortCode}, #{gid}, #{date}, #{pv}, #{uv}, #{uip}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="updateStatsToday" parameterType="com.shortlink.entity.LinkStatsTodayDO">
+        UPDATE link_link_stats_today
+        SET pv = pv + #{entity.pv},
+            uv = uv + #{entity.uv},
+            uip = uip + #{entity.uip},
+            update_time = #{entity.updateTime}
+        WHERE short_code = #{entity.shortCode} AND date = #{entity.date}
+    </update>
+
+    <select id="selectStatsTodayByShortCodeAndDate" resultMap="StatsTodayResultMap">
+        SELECT <include refid="Stats_Today_Column_List"/>
+        FROM link_link_stats_today
+        WHERE short_code = #{shortCode} AND date = #{date}
+    </select>
+
+    <select id="selectStatsTodayByShortCode" resultMap="StatsTodayResultMap">
+        SELECT <include refid="Stats_Today_Column_List"/>
+        FROM link_link_stats_today
+        WHERE short_code = #{shortCode}
+        ORDER BY date DESC
+    </select>
+
+    <select id="selectStatsTodayByGid" resultMap="StatsTodayResultMap">
+        SELECT <include refid="Stats_Today_Column_List"/>
+        FROM link_link_stats_today
+        WHERE gid = #{gid}
+        ORDER BY date DESC
+    </select>
+
+    <select id="selectStatsTodayByGidAndDateRange" resultMap="StatsTodayResultMap">
+        SELECT <include refid="Stats_Today_Column_List"/>
+        FROM link_link_stats_today
+        WHERE gid = #{gid}
+          AND date BETWEEN #{startDate} AND #{endDate}
+        ORDER BY date DESC
+    </select>
+
+</mapper>

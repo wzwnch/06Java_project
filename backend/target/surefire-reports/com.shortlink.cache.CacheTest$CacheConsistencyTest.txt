@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.shortlink.cache.CacheTest$CacheConsistencyTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.556 s -- in com.shortlink.cache.CacheTest$CacheConsistencyTest

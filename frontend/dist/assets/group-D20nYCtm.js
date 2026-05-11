@@ -1,0 +1,1 @@
+import{l as t,B as o,C as u,T as s}from"./index-DkUKowRv.js";function p(r){return o("/group",r)}function e(){return t("/group/list")}function a(r){return u("/group",r)}function i(r){return s(`/group/${r}`)}function c(r){return u("/group/sort",r)}export{p as c,i as d,e as l,c as s,a as u};

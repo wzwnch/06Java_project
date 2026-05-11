@@ -1,0 +1,1 @@
+import{l as t,B as e,C as i,T as a}from"./index-DkUKowRv.js";function u(n){return e("/link",n)}function s(n){return t("/link/page",n)}function k(n){return i("/link",n)}function o(n){return a(`/link/${n}`)}export{u as c,o as d,s as p,k as u};
